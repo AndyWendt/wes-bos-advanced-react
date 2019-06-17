@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from './Header';
 
 export default class Page extends React.Component {
   render() {
     return (
       <div>
-        Page component!
+        <Header />
         {this.props.children}
       </div>
     );
