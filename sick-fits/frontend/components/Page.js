@@ -15,12 +15,11 @@ const theme = {
 
 const StyledPage = styled.div`
   background: white;
-  color: black;
+  color: ${props => props.theme.black};
 `;
 
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
-  background: ${props => props.theme.red};
   margin: 0 auto;
   padding: 2rem;
 `;
