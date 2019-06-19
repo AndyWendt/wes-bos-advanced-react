@@ -8,10 +8,10 @@ Router.onRouteChangeStart = () => {
   NProgress.start();
 };
 Router.onRouteChangeComplete = () => {
-  console.log('triggered')
+  NProgress.done();
 };
 Router.onRouteChangeError = () => {
-  console.log('triggered')
+  NProgress.done();
 };
 
 const Logo = styled.h1`
