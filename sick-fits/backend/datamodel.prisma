@@ -5,7 +5,7 @@ type User {
 }
 
 type Item {
-  id: ID! @unique
+  id: ID! @id
   title: String!
   description: String!
   image: String
@@ -13,7 +13,7 @@ type Item {
   price: Int!
 
 #  DateTime is exposed to us via prisma
-  createdAt: DateTime
-  updatedAt: DateTime
-  user: User!
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+#  user: User!
 }
