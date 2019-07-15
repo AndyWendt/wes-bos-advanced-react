@@ -1,5 +1,4 @@
-import React from 'react';
-import Items from './items';
+import Items from '../components/items';
 
 const Home = props => (
   <div>
