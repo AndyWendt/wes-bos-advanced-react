@@ -6,11 +6,11 @@ import formatMoney from '../lib/formatMoney';
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
-      title: String!
-      description: String!
-      price: Int!
-      image: String
-      largeImage: String
+      $title: String!
+      $description: String!
+      $price: Int!
+      $image: String
+      $largeImage: String
   ) {
     createItem(
       title: $title
