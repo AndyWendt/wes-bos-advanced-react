@@ -13,7 +13,9 @@ class CreateItem extends Component {
   };
 
   handleChange = (event) => {
-    this.setState({ title: event.target.value })
+    const { name, type, value } = event.target;
+    const val = type === 'number' ? parseFloat(value) : value;
+    this.setState({ [name]: val })
   };
 
   render() {
@@ -28,6 +30,18 @@ class CreateItem extends Component {
             placeholder="title"
             required
             value={this.state.title}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label htmlFor="price">
+          Price
+          <input
+            type="text"
+            id="price"
+            name="price"
+            placeholder="price"
+            required
+            value={this.state.price}
             onChange={this.handleChange}
           />
         </label>
