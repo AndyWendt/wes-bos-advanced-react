@@ -5,7 +5,7 @@ import formatMoney from '../lib/formatMoney';
 
 class CreateItem extends Component {
   render() {
-    <Form>
+    return <Form>
       <h2>Sell all your items</h2>
     </Form>
   }
