@@ -3,6 +3,7 @@ import Mutation from 'react-apollo/Mutation';
 import gql from 'graphql-tag'
 import Form from './styles/Form';
 import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -47,7 +48,8 @@ class CreateItem extends Component {
             event.preventDefault();
             console.log(this.state);
           }}>
-            <fieldset>
+            <Error error={error} />
+            <fieldset disabled={loading} aria-busy={loading}>
               <label htmlFor="title">
                 Title
                 <input
