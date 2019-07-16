@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
 import Mutation from 'react-apollo/Mutation';
+import gql from 'graphql-tag'
 import Form from './styles/Form';
 import formatMoney from '../lib/formatMoney';
 
+const CREATE_ITEM_MUTATION = gql`
+  mutation CREATE_ITEM_MUTATION(
+      title: String!
+      description: String!
+      price: Int!
+      image: String
+      largeImage: String
+  ) {
+    createItem(
+      title: $title
+      description: $description
+      price: $price
+      image: $image
+      largeImage: $largeImage
+    ) {
+    id
+  }
+  }
+`;
+
 class CreateItem extends Component {
   state = {
-    title: '',
-    description: '',
-    image: '',
-    largeImage: '',
+    title: 'Test title',
+    description: 'Test description',
+    image: 'dog.jpg',
+    largeImage: 'large.jpg',
     price: 0,
   };
 
@@ -19,7 +40,10 @@ class CreateItem extends Component {
   };
 
   render() {
-    return <Form>
+    return <Form onSubmit={(event) => {
+      event.preventDefault();
+      console.log(this.state);
+    }}>
       <fieldset>
         <label htmlFor="title">
           Title
@@ -57,9 +81,11 @@ class CreateItem extends Component {
             onChange={this.handleChange}
           />
         </label>
+        <button type='submit'>Submit</button>
       </fieldset>
     </Form>
   }
 }
 
 export default CreateItem;
+export {CREATE_ITEM_MUTATION};
