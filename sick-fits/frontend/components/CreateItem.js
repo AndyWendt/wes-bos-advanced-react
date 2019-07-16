@@ -44,9 +44,9 @@ class CreateItem extends Component {
     return (
       <Mutation query={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, {loading, error, called, data}) => (
-          <Form onSubmit={(event) => {
+          <Form onSubmit={async event => {
             event.preventDefault();
-            console.log(this.state);
+            const res = await createItem();
           }}>
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
