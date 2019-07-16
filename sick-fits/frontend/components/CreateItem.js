@@ -12,12 +12,24 @@ class CreateItem extends Component {
     price: 0,
   };
 
+  handleChange = (event) => {
+    this.setState({ title: event.target.value })
+  };
+
   render() {
     return <Form>
       <fieldset>
         <label htmlFor="title">
           Title
-          <input type="text" id="title" name="title" placeholder="title" required value={this.state.title} />
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="title"
+            required
+            value={this.state.title}
+            onChange={this.handleChange}
+          />
         </label>
       </fieldset>
     </Form>
