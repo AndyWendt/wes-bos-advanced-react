@@ -40,50 +40,56 @@ class CreateItem extends Component {
   };
 
   render() {
-    return <Form onSubmit={(event) => {
-      event.preventDefault();
-      console.log(this.state);
-    }}>
-      <fieldset>
-        <label htmlFor="title">
-          Title
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="title"
-            required
-            value={this.state.title}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor="price">
-          Price
-          <input
-            type="text"
-            id="price"
-            name="price"
-            placeholder="price"
-            required
-            value={this.state.price}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor="description">
-          Description
-          <textarea
-            type="text"
-            id="description"
-            name="description"
-            placeholder="description"
-            required
-            value={this.state.description}
-            onChange={this.handleChange}
-          />
-        </label>
-        <button type='submit'>Submit</button>
-      </fieldset>
-    </Form>
+    return (
+      <Mutation query={CREATE_ITEM_MUTATION} variables={this.state}>
+        {(createItem, {loading, error, called, data}) => (
+          <Form onSubmit={(event) => {
+            event.preventDefault();
+            console.log(this.state);
+          }}>
+            <fieldset>
+              <label htmlFor="title">
+                Title
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="title"
+                  required
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label htmlFor="price">
+                Price
+                <input
+                  type="text"
+                  id="price"
+                  name="price"
+                  placeholder="price"
+                  required
+                  value={this.state.price}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label htmlFor="description">
+                Description
+                <textarea
+                  type="text"
+                  id="description"
+                  name="description"
+                  placeholder="description"
+                  required
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <button type='submit'>Submit</button>
+            </fieldset>
+          </Form>
+        )}
+      </Mutation>
+)
   }
 }
 
