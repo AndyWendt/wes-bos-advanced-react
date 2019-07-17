@@ -90,6 +90,9 @@ class CreateItem extends Component {
                   required
                   onChange={this.uploadFile}
                 />
+                {this.state.image && (
+                  <img width="200" src={this.state.image} alt="Upload Preview" />
+                )}
               </label>
               <label htmlFor="title">
                 Title
