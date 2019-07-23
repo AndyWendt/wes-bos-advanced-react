@@ -50,6 +50,7 @@ class UpdateItem extends Component {
     return (
       <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>
         {({data, loading}) => {
+          if(loading) return <p>Loading...</p>;
           return (
             <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
               {(createItem, { loading, error }) => (
@@ -77,7 +78,7 @@ class UpdateItem extends Component {
                         name="title"
                         placeholder="Title"
                         required
-                        value={this.state.title}
+                        defaultValue={data.item.title}
                         onChange={this.handleChange}
                       />
                     </label>
@@ -90,7 +91,7 @@ class UpdateItem extends Component {
                         name="price"
                         placeholder="Price"
                         required
-                        value={this.state.price}
+                        defaultValue={data.item.price}
                         onChange={this.handleChange}
                       />
                     </label>
@@ -102,11 +103,11 @@ class UpdateItem extends Component {
                         name="description"
                         placeholder="Enter A Description"
                         required
-                        value={this.state.description}
+                        defaultValue={data.item.description}
                         onChange={this.handleChange}
                       />
                     </label>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Save Changes</button>
                   </fieldset>
                 </Form>
               )}
