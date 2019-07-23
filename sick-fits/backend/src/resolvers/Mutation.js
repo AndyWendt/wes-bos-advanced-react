@@ -12,7 +12,10 @@ const Mutations = {
   updateItem(parent, args, context, info) {
     const updates = { ...args };
     delete updates.id;
-    return context.db.mutation.updateItem;
+    return context.db.mutation.updateItem({
+      data: updates,
+      id: args.id,
+    });
   }
 };
 
