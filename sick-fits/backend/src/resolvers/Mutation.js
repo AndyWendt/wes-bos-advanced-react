@@ -5,9 +5,14 @@ const Mutations = {
       data: {
         ...args
       }
-    }, info)
+    }, info);
 
     return item;
+  },
+  updateItem(parent, args, context, info) {
+    const updates = { ...args };
+    delete updates.id;
+    return context.db.mutation.updateItem;
   }
 };
 
