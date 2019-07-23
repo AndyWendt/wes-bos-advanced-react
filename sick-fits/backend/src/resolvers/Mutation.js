@@ -14,8 +14,10 @@ const Mutations = {
     delete updates.id;
     return context.db.mutation.updateItem({
       data: updates,
-      id: args.id,
-    });
+      where: {
+        id: args.id
+      },
+    }, info);
   }
 };
 
